@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casiers Express</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <a href="#" class="brand">Casiers Express</a>
+
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="#services" data-i18n="nav.services">Services</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en" aria-label="English">
+            <svg class="flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+              <rect width="30" height="20" fill="#FF0000"/>
+              <rect x="7.5" width="15" height="20" fill="#FFFFFF"/>
+              <path d="M15,4 L16,7 L19,6 L17,8.5 L19,9 L15,13 L11,9 L13,8.5 L11,6 L14,7 Z" fill="#FF0000"/>
+              <rect x="14.2" y="13" width="1.6" height="3" fill="#FF0000"/>
+            </svg>
+            EN
+          </button>
+          <button class="lang-btn" data-lang="fr" aria-label="Français">
+            <svg class="flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+              <rect width="30" height="20" fill="#003DA5"/>
+              <rect x="13.5" width="3" height="20" fill="#FFFFFF"/>
+              <rect y="8.5" width="30" height="3" fill="#FFFFFF"/>
+              <g fill="#FFFFFF">
+                <path d="M6,4 Q6,2 7,2 Q8,2 8,4 Q9,3 9,4 Q9,5 8,5 L7.5,5 L7.5,6.5 L6.5,6.5 L6.5,5 L6,5 Q5,5 5,4 Q5,3 6,4Z"/>
+                <path d="M22,4 Q22,2 23,2 Q24,2 24,4 Q25,3 25,4 Q25,5 24,5 L23.5,5 L23.5,6.5 L22.5,6.5 L22.5,5 L22,5 Q21,5 21,4 Q21,3 22,4Z"/>
+                <path d="M6,14 Q6,12 7,12 Q8,12 8,14 Q9,13 9,14 Q9,15 8,15 L7.5,15 L7.5,16.5 L6.5,16.5 L6.5,15 L6,15 Q5,15 5,14 Q5,13 6,14Z"/>
+                <path d="M22,14 Q22,12 23,12 Q24,12 24,14 Q25,13 25,14 Q25,15 24,15 L23.5,15 L23.5,16.5 L22.5,16.5 L22.5,15 L22,15 Q21,15 21,14 Q21,13 22,14Z"/>
+              </g>
+            </svg>
+            FR
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="main-layout">
+    <section class="designer">
+      <h2 data-i18n="designer.title">Configurateur d'événement</h2>
+
+      <div class="designer-controls">
+        <div class="control-group">
+          <label data-i18n="designer.columns">Columns</label>
+          <div class="stepper">
+            <button class="step-btn" id="cols-up"   aria-label="Increase columns">▲</button>
+            <span   class="step-val" id="cols-value">2</span>
+            <button class="step-btn" id="cols-down" aria-label="Decrease columns">▼</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label data-i18n="designer.rows">Rows</label>
+          <div class="stepper">
+            <button class="step-btn" id="rows-up"   aria-label="Increase rows">▲</button>
+            <span   class="step-val" id="rows-value">2</span>
+            <button class="step-btn" id="rows-down" aria-label="Decrease rows">▼</button>
+          </div>
+        </div>
+
+        <div class="designer-summary">
+          <span class="summary-lockers" id="summary-lockers">20 lockers</span>
+          <span class="summary-dims"    id="summary-dims"></span>
+          <span class="summary-tent"    id="summary-tent"></span>
+        </div>
+
+        <p class="capacity-warning" id="capacity-warning" hidden>
+          <span data-i18n="designer.capacity_warning">Maximum capacity of 500 lockers reached.</span>
+        </p>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="locker-canvas"></canvas>
+      </div>
+
+      <p class="designer-legend">
+        <span data-i18n="designer.legend">Each unit: 15.5″ W × 18″ D × 73″ H · 5 compartments · 36″ aisles between row pairs</span>
+      </p>
+
+    </section>
+
+    <section class="quote-section" id="contact">
+      <h2 data-i18n="form.title">Demande de soumission</h2>
+
+      <form id="quote-form" class="quote-form">
+        <div class="form-row">
+          <div class="form-field required">
+            <label for="f-name" data-i18n="form.contact_name">Nom de contact</label>
+            <input type="text" id="f-name" name="contact_name" required>
+          </div>
+          <div class="form-field">
+            <label for="f-company" data-i18n="form.company">Nom de compagnie</label>
+            <input type="text" id="f-company" name="company">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field required">
+            <label for="f-email" data-i18n="form.email">Courriel</label>
+            <input type="email" id="f-email" name="email" required>
+          </div>
+          <div class="form-field">
+            <label for="f-phone" data-i18n="form.phone">Numéro de téléphone</label>
+            <input type="tel" id="f-phone" name="phone">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field required">
+            <label for="f-start" data-i18n="form.start_date">Date de début</label>
+            <input type="date" id="f-start" name="start_date" required>
+          </div>
+          <div class="form-field required">
+            <label for="f-end" data-i18n="form.end_date">Date de fin</label>
+            <input type="date" id="f-end" name="end_date" required>
+          </div>
+        </div>
+
+        <div class="form-field required">
+          <label for="f-address" data-i18n="form.address">Adresse de livraison</label>
+          <input type="text" id="f-address" name="delivery_address" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="f-charge" data-i18n="form.charge_users">Chargez-vous les clients?</label>
+            <select id="f-charge" name="charge_users">
+              <option value="Non" data-i18n="form.no">Non</option>
+              <option value="Oui" data-i18n="form.yes">Oui</option>
+            </select>
+          </div>
+          <div class="form-field" id="charge-amount-field" hidden>
+            <label for="f-amount" data-i18n="form.charge_amount">Si oui, combien par utilisation?</label>
+            <div class="input-dollar">
+              <span class="dollar-sign">$</span>
+              <input type="text" id="f-amount" name="charge_amount" inputmode="decimal" placeholder="0.00">
+            </div>
+            <p class="field-error" id="amount-error" hidden data-i18n="form.amount_error">Veuillez entrer un montant valide (ex: 5.00)</p>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="f-tent" data-i18n="form.tent_required">Tente requise?</label>
+            <select id="f-tent" name="tent_required">
+              <option value="Non" data-i18n="form.no">Non</option>
+              <option value="Oui" data-i18n="form.yes">Oui</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="f-vinyl" data-i18n="form.vinyl_required">Vinyl wrap requis?</label>
+            <select id="f-vinyl" name="vinyl_required">
+              <option value="Non" data-i18n="form.no">Non</option>
+              <option value="Oui" data-i18n="form.yes">Oui</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="f-logo" data-i18n="form.logo">Lien vers votre logo (pour la soumission)</label>
+          <input type="url" id="f-logo" name="logo_url" placeholder="https://exemple.com/logo.png">
+        </div>
+
+        <div class="form-field required">
+          <label for="f-desc" data-i18n="form.description">Description de l'événement</label>
+          <textarea id="f-desc" name="description" rows="4" required></textarea>
+        </div>
+
+        <!-- Locker configuration (auto-filled from designer) -->
+        <input type="hidden" name="locker_columns" id="form-cols">
+        <input type="hidden" name="locker_rows"    id="form-rows">
+        <input type="hidden" name="locker_total"   id="form-total">
+        <input type="hidden" name="tent_size"      id="form-tent">
+
+        <p class="form-note" data-i18n="form.note">Notez : les soumissions sont générées en 24-48h.</p>
+
+        <button type="submit" class="form-preview-btn" data-i18n="form.preview">Prévisualiser ma demande</button>
+      </form>
+
+      <!-- Preview overlay -->
+      <div id="form-preview" class="form-preview-overlay" hidden>
+        <div class="form-preview-card">
+          <button type="button" id="preview-close" class="preview-close" aria-label="Close">&times;</button>
+          <h3 data-i18n="form.preview_title">Résumé de votre demande</h3>
+          <dl id="preview-body" class="preview-body"></dl>
+          <div class="preview-actions">
+            <button type="button" id="preview-back" class="preview-back" data-i18n="form.preview_back">Retour</button>
+            <button type="button" id="preview-submit" class="form-submit" data-i18n="form.submit">Soumettre ma demande</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="form-success" class="form-success" hidden>
+        <p data-i18n="form.success">Merci, votre soumission a été envoyée. Vous allez recevoir une réponse d'ici 48 heures. Si vous n'entendez pas de nous, écrivez-nous à soumissions@casiersexpress.com.</p>
+      </div>
+    </section>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
