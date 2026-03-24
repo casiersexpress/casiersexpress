@@ -242,10 +242,35 @@ main {
   width: 100%;
 }
 
+.designer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .designer-legend {
-  text-align: center;
   font-size: 0.8rem;
   color: #8090a0;
+}
+
+.download-btn {
+  padding: 0.45rem 1rem;
+  border: 1.5px solid #a8d4d6;
+  border-radius: 6px;
+  background: none;
+  color: #5a9095;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .2s, color .2s;
+}
+
+.download-btn:hover {
+  background: #a8d4d6;
+  color: #1d1d1d;
 }
 
 /* ── Main Layout ── */

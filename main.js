@@ -4,6 +4,7 @@ const translations = {
     'nav.services':              'Services',
     'nav.contact':               'Contact',
     'designer.title':             'Event Configurator',
+    'designer.download':         'Download image',
     'designer.columns':          'Columns',
     'designer.rows':             'Rows',
     'designer.legend':           'Each unit: 15.5″ W × 18″ D × 73″ H · 5 compartments · 36″ aisles between row pairs',
@@ -41,6 +42,7 @@ const translations = {
     'nav.services':              'Services',
     'nav.contact':               'Contact',
     'designer.title':             'Configurateur d\'événement',
+    'designer.download':         'Télécharger l\'image',
     'designer.columns':          'Colonnes',
     'designer.rows':             'Rangées',
     'designer.legend':           'Chaque unité : 15,5″ L × 18″ P × 73″ H · 5 compartiments · allées de 36″ entre chaque paire',
@@ -218,7 +220,7 @@ function drawAisleFloor(aisleIdx, scale, ox, oy, xOff, yOff) {
 
 // facesBack = false → near face (y=y0) shows compartment doors (front row)
 // facesBack = true  → near face (y=y0) is the plain back panel (back row)
-function drawUnit(col, worldY, scale, ox, oy, facesBack, xOff, yOff) {
+function drawUnit(col, worldY, scale, ox, oy, facesBack, xOff, yOff, startNum) {
   const x0 = xOff + col * LOCKER_W;
   const y0 = yOff + worldY;
   const x1 = x0 + LOCKER_W;
@@ -263,17 +265,18 @@ function drawUnit(col, worldY, scale, ox, oy, facesBack, xOff, yOff) {
       const z = (LOCKER_H / STACKS) * i;
       drawLine(p(x0, y0, z), p(x1, y0, z), '#254850');
     }
-    // Door handles (right side of each compartment)
+    // Compartment numbers
     const unitScreenW = LOCKER_W * WX_CX * scale;
-    if (unitScreenW >= 8) {
-      const handleR = Math.min(3, Math.max(1, scale * 0.85));
+    if (unitScreenW >= 8 && startNum != null) {
+      const fontSize = Math.max(7, Math.min(14, unitScreenW * 0.4));
+      ctx.font = `bold ${fontSize}px sans-serif`;
+      ctx.fillStyle = '#1a3a3d';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
       for (let i = 0; i < STACKS; i++) {
         const hz = (LOCKER_H / STACKS) * (i + 0.5);
-        const hp = p(x0 + LOCKER_W * 0.78, y0, hz);
-        ctx.beginPath();
-        ctx.arc(hp.x, hp.y, handleR, 0, Math.PI * 2);
-        ctx.fillStyle = '#182e32';
-        ctx.fill();
+        const hp = p(x0 + LOCKER_W * 0.5, y0, hz);
+        ctx.fillText(startNum + (STACKS - 1 - i), hp.x, hp.y);
       }
     }
   }
@@ -371,20 +374,41 @@ function drawScene() {
     if (row1 < lockerRows) {
       const wy = getRowY(row1);
       for (let col = 0; col < lockerCols; col++) {
-        drawUnit(col, wy, scale, ox, oy, true, xOff, yOff);
+        const num = row1 * lockerCols * STACKS + col * STACKS + 1;
+        drawUnit(col, wy, scale, ox, oy, true, xOff, yOff, num);
       }
     }
 
     {
       const wy = getRowY(row0);
       for (let col = 0; col < lockerCols; col++) {
-        drawUnit(col, wy, scale, ox, oy, false, xOff, yOff);
+        const num = row0 * lockerCols * STACKS + col * STACKS + 1;
+        drawUnit(col, wy, scale, ox, oy, false, xOff, yOff, num);
       }
     }
 
     if (pair > 0) {
       drawAisleFloor(pair - 1, scale, ox, oy, xOff, yOff);
     }
+  }
+
+  // ── Floor range labels (at the right end of each row) ──
+  const floorFontSize = Math.max(8, Math.min(14, scale * 3));
+  ctx.font = `bold ${floorFontSize}px sans-serif`;
+  ctx.fillStyle = '#6a5020';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+
+  for (let row = 0; row < lockerRows; row++) {
+    const rowStart = row * lockerCols * STACKS + 1;
+    const rowEnd   = rowStart + lockerCols * STACKS - 1;
+    const label = `${rowStart}–${rowEnd}`;
+
+    const wy = getRowY(row);
+    const labelX = xOff + lockerCols * LOCKER_W + 4;
+    const labelY = yOff + wy + LOCKER_D / 2;
+    const lp = iso(labelX, labelY, 0, scale, ox, oy);
+    ctx.fillText(label, lp.x + 4, lp.y);
   }
 
   // ── Summary ──
@@ -450,6 +474,13 @@ document.getElementById('rows-down').addEventListener('click', () => {
 });
 
 window.addEventListener('resize', drawScene);
+
+document.getElementById('download-render').addEventListener('click', () => {
+  const link = document.createElement('a');
+  link.download = 'casiers-express-layout.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+});
 
 // ── Quote Form ──
 const quoteForm      = document.getElementById('quote-form');
