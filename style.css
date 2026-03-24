@@ -424,8 +424,8 @@ main {
   padding: 0.65rem 1.5rem;
   border: none;
   border-radius: 6px;
-  background: #0055a4;
-  color: #fff;
+  background: #a8d4d6;
+  color: #1d1d1d;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -434,11 +434,12 @@ main {
 
 .form-preview-btn:hover,
 .form-submit:hover {
-  background: #003d7a;
+  background: #8cc0c3;
 }
 
 .form-submit:disabled {
-  background: #8090a0;
+  background: #ccc;
+  color: #888;
   cursor: not-allowed;
 }
 

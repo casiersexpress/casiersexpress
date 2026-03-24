@@ -27,6 +27,8 @@ const translations = {
     'form.description':          'Event Description',
     'form.note':                 'Note: quotes are generated within 24-48h.',
     'form.required_error':       'This field is required.',
+    'form.email_error':          'Please enter a valid email address.',
+    'form.date_error':           'End date must be after start date.',
     'footer.made':               'Made in Canada with love <3',
     'footer.rights':             'All rights reserved.',
     'form.preview':              'Preview my request',
@@ -62,6 +64,8 @@ const translations = {
     'form.description':          'Description de l\'événement',
     'form.note':                 'Notez : les soumissions sont générées en 24-48h.',
     'form.required_error':       'Ce champ est requis.',
+    'form.email_error':          'Veuillez entrer une adresse courriel valide.',
+    'form.date_error':           'La date de fin doit être après la date de début.',
     'footer.made':               'Fait au Canada avec amour <3',
     'footer.rights':             'Tous droits réservés.',
     'form.preview':              'Prévisualiser ma demande',
@@ -567,6 +571,38 @@ function validateForm() {
     return false;
   }
 
+  // Validate email format
+  const emailInput = document.getElementById('f-email');
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (emailInput.value.trim() && !EMAIL_RE.test(emailInput.value.trim())) {
+    const emailField = emailInput.closest('.form-field');
+    emailField.classList.add('has-error');
+    const emailErrMsg = translations[curLang]?.['form.email_error'] || 'Please enter a valid email address.';
+    const msg = document.createElement('p');
+    msg.className = 'field-required-error';
+    msg.textContent = emailErrMsg;
+    emailField.appendChild(msg);
+    emailInput.focus();
+    emailInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return false;
+  }
+
+  // Validate end date is after start date
+  const startInput = document.getElementById('f-start');
+  const endInput = document.getElementById('f-end');
+  if (startInput.value && endInput.value && endInput.value <= startInput.value) {
+    const endField = endInput.closest('.form-field');
+    endField.classList.add('has-error');
+    const dateErrMsg = translations[curLang]?.['form.date_error'] || 'End date must be after start date.';
+    const msg = document.createElement('p');
+    msg.className = 'field-required-error';
+    msg.textContent = dateErrMsg;
+    endField.appendChild(msg);
+    endInput.focus();
+    endInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return false;
+  }
+
   if (chargeSelect.value === 'Oui') {
     const val = amountInput.value.trim();
     if (!val || !DOLLAR_RE.test(val)) {
@@ -624,6 +660,23 @@ function hidePreview() {
   previewOverlay.hidden = true;
   document.body.style.overflow = '';
 }
+
+// Constrain end date to be after start date
+const startDateInput = document.getElementById('f-start');
+const endDateInput   = document.getElementById('f-end');
+
+startDateInput.addEventListener('change', () => {
+  if (startDateInput.value) {
+    const next = new Date(startDateInput.value);
+    next.setDate(next.getDate() + 1);
+    endDateInput.min = next.toISOString().split('T')[0];
+    if (endDateInput.value && endDateInput.value <= startDateInput.value) {
+      endDateInput.value = '';
+    }
+  } else {
+    endDateInput.min = '';
+  }
+});
 
 // Preview button (form submit triggers validation → preview)
 quoteForm.addEventListener('submit', (e) => {
