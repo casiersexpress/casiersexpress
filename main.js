@@ -630,6 +630,9 @@ function injectLockerConfig() {
     const t = getTent(lw, ld);
     document.getElementById('form-tent').value = cl === 'fr' ? t.fr : t.en;
   }
+
+  // Capture canvas render as base64 PNG
+  document.getElementById('form-render').value = canvas.toDataURL('image/png');
 }
 
 function showPreview() {
