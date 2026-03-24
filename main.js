@@ -118,8 +118,10 @@ const COL_MAX    = 12;
 const ROW_MAX    = 10;
 const LOCKER_MAX = 500;
 
-// Tent sizes (inches): auto-select smallest that fits
+// Tent sizes (inches): auto-select smallest that fits comfortably
+// Each tent can be used in either orientation (w×d or d×w)
 const TENTS = [
+  { w: 120, d: 120, en: "10' × 10' tent", fr: "tente 10' × 10'" },
   { w: 240, d: 120, en: "20' × 10' tent", fr: "tente 20' × 10'" },
   { w: 240, d: 240, en: "20' × 20' tent", fr: "tente 20' × 20'" },
   { w: 240, d: 480, en: "20' × 40' tent", fr: "tente 20' × 40'" },
@@ -201,7 +203,13 @@ function getTotalDepth(numRows) {
 
 function getTent(lockersW, lockersD) {
   for (const t of TENTS) {
-    if (lockersW <= t.w && lockersD <= t.d) return t;
+    // Try normal orientation and rotated
+    if ((lockersW <= t.w && lockersD <= t.d) ||
+        (lockersW <= t.d && lockersD <= t.w)) {
+      // Return with dimensions oriented to best fit the lockers
+      if (lockersW <= t.w && lockersD <= t.d) return t;
+      return { w: t.d, d: t.w, en: t.en, fr: t.fr };
+    }
   }
   return TENTS[TENTS.length - 1]; // largest fallback
 }
