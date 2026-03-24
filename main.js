@@ -27,6 +27,8 @@ const translations = {
     'form.description':          'Event Description',
     'form.note':                 'Note: quotes are generated within 24-48h.',
     'form.required_error':       'This field is required.',
+    'footer.made':               'Made in Canada with love <3',
+    'footer.rights':             'All rights reserved.',
     'form.preview':              'Preview my request',
     'form.preview_title':        'Request Summary',
     'form.preview_back':         'Back',
@@ -60,6 +62,8 @@ const translations = {
     'form.description':          'Description de l\'événement',
     'form.note':                 'Notez : les soumissions sont générées en 24-48h.',
     'form.required_error':       'Ce champ est requis.',
+    'footer.made':               'Fait au Canada avec amour <3',
+    'footer.rights':             'Tous droits réservés.',
     'form.preview':              'Prévisualiser ma demande',
     'form.preview_title':        'Résumé de votre demande',
     'form.preview_back':         'Retour',
@@ -392,12 +396,7 @@ function drawScene() {
   };
   summaryDims.textContent =
     `${toFtIn(lockersW)} × ${toFtIn(lockersD)} ${lang === 'fr' ? 'profondeur totale' : 'total depth'}`;
-  const tentSelect = document.getElementById('f-tent');
-  if (tentSelect && tentSelect.value === 'Non') {
-    summaryTent.textContent = lang === 'fr' ? 'Non applicable' : 'N/A';
-  } else {
-    summaryTent.textContent = lang === 'fr' ? tent.fr : tent.en;
-  }
+  summaryTent.textContent = lang === 'fr' ? tent.fr : tent.en;
 }
 
 function updateCounters() {
@@ -447,8 +446,6 @@ document.getElementById('rows-down').addEventListener('click', () => {
 });
 
 window.addEventListener('resize', drawScene);
-
-document.getElementById('f-tent').addEventListener('change', drawScene);
 
 // ── Quote Form ──
 const quoteForm      = document.getElementById('quote-form');
@@ -680,3 +677,4 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
 
 setLanguage(localStorage.getItem('lang') || 'en');
 updateCounters();
+document.getElementById('footer-year').textContent = new Date().getFullYear();

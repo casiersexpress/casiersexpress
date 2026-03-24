@@ -4,24 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casiers Express</title>
+
+  <!-- Favicons -->
+  <link rel="icon" href="img/favicon.ico" sizes="48x48">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="img/favicon-96x96.png" type="image/png" sizes="96x96">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <meta name="theme-color" content="#ffffff">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header>
     <nav class="navbar">
-      <a href="#" class="brand">Casiers Express</a>
+      <a href="#" class="brand"><img src="img/logo-casiers-express-color-400x200.svg" alt="Casiers Express" class="brand-logo"></a>
 
       <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
 
       <div class="nav-menu">
-        <ul class="nav-links">
-          <li><a href="#services" data-i18n="nav.services">Services</a></li>
-          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-        </ul>
-
         <div class="lang-switcher">
           <button class="lang-btn active" data-lang="en" aria-label="English">
             <svg class="flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
@@ -213,6 +217,12 @@
     </section>
     </div>
   </main>
+
+  <footer class="site-footer">
+    <p data-i18n="footer.made">Fait au Canada avec amour &lt;3</p>
+    <span class="footer-sep">|</span>
+    <p>&copy; <span id="footer-year"></span> Casiers Express. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+  </footer>
 
   <script src="main.js"></script>
 </body>

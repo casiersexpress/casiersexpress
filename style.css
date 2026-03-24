@@ -18,20 +18,22 @@ body {
   gap: 2rem;
   padding: 0 1.5rem;
   height: 60px;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,.1);
+  background: #1d1d1d;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
 .brand {
-  font-size: 1.1rem;
-  font-weight: 700;
   text-decoration: none;
-  color: #111;
-  white-space: nowrap;
   margin-right: auto;
+  line-height: 0;
+}
+
+.brand-logo {
+  height: 40px;
+  width: auto;
 }
 
 .nav-menu {
@@ -69,18 +71,18 @@ body {
   align-items: center;
   gap: 0.35rem;
   padding: 0.3rem 0.6rem;
-  border: 1.5px solid #ccc;
+  border: 1.5px solid #555;
   border-radius: 4px;
   background: none;
   cursor: pointer;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #555;
+  color: #ccc;
   transition: border-color .2s, color .2s;
 }
 
-.lang-btn:hover { border-color: #0055a4; color: #0055a4; }
-.lang-btn.active { border-color: #0055a4; color: #0055a4; background: #eef3fb; }
+.lang-btn:hover { border-color: #a8d4d6; color: #a8d4d6; }
+.lang-btn.active { border-color: #a8d4d6; color: #a8d4d6; background: rgba(168,212,214,.12); }
 
 .flag {
   width: 22px;
@@ -106,7 +108,7 @@ body {
 .hamburger span {
   display: block;
   height: 2px;
-  background: #333;
+  background: #ccc;
   border-radius: 2px;
   transition: transform .25s, opacity .25s;
 }
@@ -552,6 +554,30 @@ main {
   line-height: 1.5;
 }
 
+/* ── Footer ── */
+.site-footer {
+  text-align: center;
+  padding: 1.25rem 1.5rem;
+  margin-top: 3rem;
+  background: #a8d4d6;
+  color: #fff;
+  font-size: 0.82rem;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer .footer-sep {
+  opacity: 0.6;
+}
+
 /* ── Mobile ── */
 @media (max-width: 640px) {
   .hamburger { display: flex; }
@@ -572,7 +598,7 @@ main {
     align-items: stretch;
     gap: 0;
     width: 100%;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #333;
   }
 
   .nav-menu.open { display: flex; }
@@ -589,7 +615,7 @@ main {
 
   .lang-switcher {
     padding: 0.75rem 1.5rem;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #333;
   }
 
   .form-row {
