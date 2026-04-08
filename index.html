@@ -27,6 +27,9 @@
   <link rel="manifest" href="img/site.webmanifest">
   <meta name="theme-color" content="#ffffff">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -40,6 +43,12 @@
       </button>
 
       <div class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="#why-us" data-i18n="nav.why">Why Us</a></li>
+          <li><a href="#event-types" data-i18n="nav.events">Events</a></li>
+          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+          <li><a href="#contact" class="nav-cta" data-i18n="nav.quote">Get a Quote</a></li>
+        </ul>
         <div class="lang-switcher">
           <button class="lang-btn active" data-lang="en" aria-label="English">
             <svg class="flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
@@ -69,9 +78,198 @@
     </nav>
   </header>
 
+  <section class="hero">
+    <div class="hero-wrap">
+      <div class="hero-content">
+        <div class="hero-eyebrow" data-i18n="hero.eyebrow">Event Locker Rentals · Quebec &amp; Ontario</div>
+        <h1 data-i18n="hero.title">Secure Storage for <em>Unforgettable</em> Events</h1>
+        <p data-i18n="hero.subtitle">Rent lockers for music festivals, Pride events, and temporary gatherings. Get quotes in 48 hours.</p>
+        <a href="#designer" class="cta-btn" data-i18n="hero.cta">Configure Your Lockers</a>
+      </div>
+    </div>
+    <a href="#why-us" class="hero-scroll" aria-label="Scroll down">
+      <span data-i18n="hero.scroll">Discover</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- Stats bar: flush under hero, full-width -->
+  <section class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-number">48h</span>
+      <span class="stat-label" data-i18n="stats.quote">Quote Turnaround</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">500+</span>
+      <span class="stat-label" data-i18n="stats.lockers">Lockers Available</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">100%</span>
+      <span class="stat-label" data-i18n="stats.delivery">Delivery &amp; Setup Included</span>
+    </div>
+  </section>
+
   <main>
+    <!-- 1. Dual value — core pitch -->
+    <section class="dual-value" id="why-us">
+      <h2 data-i18n="dual.title">A Win for Organizers. A Win for Attendees.</h2>
+      <div class="dual-grid">
+        <div class="dual-card dual-organizer">
+          <div class="dual-label" data-i18n="dual.org.label">For Organizers</div>
+          <ul class="dual-list">
+            <li data-i18n="dual.org.li1">Offset costs by charging attendees — keep the difference</li>
+            <li data-i18n="dual.org.li2">Zero setup effort: we deliver, install, and remove everything</li>
+            <li data-i18n="dual.org.li3">Reduces lost &amp; found, complaints, and security incidents</li>
+            <li data-i18n="dual.org.li4">Quote in 48 hours, confirmed before your deadline</li>
+            <li data-i18n="dual.org.li5">Optional branded vinyl wrap to match your event's look</li>
+          </ul>
+        </div>
+        <div class="dual-card dual-attendee">
+          <div class="dual-label" data-i18n="dual.att.label">For Attendees</div>
+          <ul class="dual-list">
+            <li data-i18n="dual.att.li1">Hands-free from the moment they arrive</li>
+            <li data-i18n="dual.att.li2">Peace of mind for phones, wallets, and bags</li>
+            <li data-i18n="dual.att.li3">Numbered lockers — easy to find, fast to access</li>
+            <li data-i18n="dual.att.li4">Weatherproof in rain or sun</li>
+            <li data-i18n="dual.att.li5">No more leaving valuables unattended on the grass</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Revenue — key differentiator -->
+    <section class="revenue-section">
+      <div class="revenue-inner">
+        <div class="revenue-text">
+          <h2 data-i18n="revenue.title">Lockers Can Pay for Themselves</h2>
+          <p data-i18n="revenue.desc">Many organizers charge attendees a small fee per locker — and pocket the difference. You set the price. You keep the revenue. We handle the gear.</p>
+          <div class="revenue-example">
+            <div class="revenue-calc">
+              <div class="calc-row">
+                <span data-i18n="revenue.calc.lockers">100 lockers rented by attendees</span>
+                <span class="calc-val">× $5</span>
+              </div>
+              <div class="calc-row">
+                <span data-i18n="revenue.calc.days">Over 2 days</span>
+                <span class="calc-val">× 2</span>
+              </div>
+              <div class="calc-divider"></div>
+              <div class="calc-row calc-total">
+                <span data-i18n="revenue.calc.total">Attendee revenue generated</span>
+                <span class="calc-val calc-highlight">$1,000</span>
+              </div>
+            </div>
+            <p class="revenue-note" data-i18n="revenue.note">Numbers are illustrative. Real earnings depend on event size, duration, and pricing.</p>
+          </div>
+        </div>
+        <div class="revenue-cta-wrap">
+          <p data-i18n="revenue.cta.text">Ready to see what works for your event?</p>
+          <a href="#designer" class="cta-btn" data-i18n="revenue.cta.btn">Configure Your Lockers</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Event types — full-width photo grid -->
+    <section class="event-types" id="event-types">
+      <div class="event-types-inner">
+        <div class="event-types-header">
+          <h2 data-i18n="events.title">Built for Every Type of Temporary Event</h2>
+          <p class="section-intro" data-i18n="events.intro">From day-long festivals to week-long gatherings — we specialize exclusively in short-term event rentals, not permanent installations.</p>
+        </div>
+      </div>
+      <div class="events-ticker" aria-hidden="true">
+        <div class="events-ticker-track">
+          <span class="ticker-item" data-i18n="events.music.title">Music Festivals</span>
+          <span class="ticker-sep">✦</span>
+          <span class="ticker-item" data-i18n="events.pride.title">Pride &amp; LGBTQ+</span>
+          <span class="ticker-sep">✦</span>
+          <span class="ticker-item" data-i18n="events.sports.title">Sporting Events</span>
+          <span class="ticker-sep">✦</span>
+          <span class="ticker-item" data-i18n="events.community.title">Community Festivals</span>
+          <span class="ticker-sep">✦</span>
+          <span class="ticker-item" data-i18n="events.music.title">Music Festivals</span>
+          <span class="ticker-sep">✦</span>
+          <span class="ticker-item" data-i18n="events.pride.title">Pride &amp; LGBTQ+</span>
+          <span class="ticker-sep">✦</span>
+          <span class="ticker-item" data-i18n="events.sports.title">Sporting Events</span>
+          <span class="ticker-sep">✦</span>
+          <span class="ticker-item" data-i18n="events.community.title">Community Festivals</span>
+          <span class="ticker-sep">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Includes -->
+    <section class="includes-section">
+      <div class="includes-inner">
+        <div class="includes-text">
+          <h2 data-i18n="includes.title">What Every Rental Includes</h2>
+          <p data-i18n="includes.intro">No hidden fees, no surprises. Here's exactly what you get with every Casiers Express rental.</p>
+        </div>
+        <div class="includes-cols">
+          <div class="includes-col">
+            <div class="includes-col-label" data-i18n="includes.standard">Included in every rental</div>
+            <ul class="includes-list">
+              <li><span class="inc-icon">🚚</span><span data-i18n="includes.delivery.title">Delivery &amp; Pickup</span></li>
+              <li><span class="inc-icon">🔧</span><span data-i18n="includes.setup.title">Installation &amp; Removal</span></li>
+              <li><span class="inc-icon">🔢</span><span data-i18n="includes.numbered.title">Numbered Lockers</span></li>
+              <li><span class="inc-icon">🌧️</span><span data-i18n="includes.weatherproof.title">Weatherproof Units</span></li>
+            </ul>
+          </div>
+          <div class="includes-col">
+            <div class="includes-col-label includes-col-label--optional" data-i18n="includes.addons">Optional add-ons</div>
+            <ul class="includes-list">
+              <li><span class="inc-icon">⛺</span><span data-i18n="includes.tent.title">Tent Canopy</span></li>
+              <li><span class="inc-icon">🎨</span><span data-i18n="includes.vinyl.title">Vinyl Wrap Branding</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FAQ -->
+    <section class="faq" id="faq">
+      <h2 data-i18n="faq.title">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary data-i18n="faq.q1">How far in advance should I book?</summary>
+          <p data-i18n="faq.a1">We recommend reaching out at least 2–3 weeks before your event. That said, we do our best to accommodate last-minute requests — submit a quote and we'll confirm availability within 48 hours.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q2">Do you deliver and set up the lockers?</summary>
+          <p data-i18n="faq.a2">Yes! Delivery, installation, and pickup are all included in your quote. Our team handles everything so you can focus on running your event.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q3">What areas do you serve?</summary>
+          <p data-i18n="faq.a3">We primarily serve events in Quebec and Ontario. Reach out for events outside these regions — we may still be able to help depending on logistics.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q4">Are the lockers weatherproof?</summary>
+          <p data-i18n="faq.a4">Our lockers are durable and built for outdoor use. For extended outdoor exposure or harsh weather conditions, we can include a tent covering with your rental.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q5">Can I brand the lockers with my event's logo?</summary>
+          <p data-i18n="faq.a5">Absolutely. We offer vinyl wrap branding so your lockers match your event's identity. Just indicate it in your quote request and we'll include it.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q6">Can I charge attendees to use the lockers?</summary>
+          <p data-i18n="faq.a6">Yes — many organizers charge attendees per locker to offset the rental cost. You set your own pricing and handle collection. We handle the equipment.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <div class="cta-banner-content">
+        <h2 data-i18n="cta.title">Ready to Add Lockers to Your Event?</h2>
+        <p data-i18n="cta.desc">Use the configurator below to design your layout, then submit a quote request. We'll get back to you within 48 hours.</p>
+      </div>
+      <a href="#designer" class="cta-btn" data-i18n="cta.btn">Configure Your Lockers</a>
+    </section>
+
     <div class="main-layout">
-    <section class="designer">
+    <section class="designer" id="designer">
       <h2 data-i18n="designer.title">Configurateur d'événement</h2>
 
       <div class="designer-controls">
